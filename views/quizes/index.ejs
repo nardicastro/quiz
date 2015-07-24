@@ -1,4 +1,15 @@
+<form method="get">
+  <p>Texto a buscar</p>
+  <input type="text" name="search" value=""/>
+  <input type="submit" value="Buscar">
+</form>
+
+
 <table>
+  <% if (filtro !== '*') { %>
+  		<tr><td>Filtro: <strong>"<%= filtro %>"</strong></td></tr>
+  	<% } %>
+  <tr><td>Encontradas: <%= quizes.length %></td></tr>
   <% var i; for (i=0; i< quizes.length; i++) { %>
     <tr><td><a href="quizes/<%=quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr>
   <% } %>
