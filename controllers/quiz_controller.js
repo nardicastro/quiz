@@ -18,7 +18,7 @@ exports.index = function(req,res,next)
     req.query.search  = ('%' + req.query.search.trim() + '%')
 						.replace(/\s+/g, '%')
 						.toUpperCase();
-    models.Quiz.findAll({where:["pregunta like ?", req.query.search], order: 'pregunta ASC'})
+    models.Quiz.findAll({where:["upper(pregunta) like ?", req.query.search], order: 'pregunta ASC'})
     .then(function(quizes)
     {
       res.render('quizes/index.ejs',{ quizes: quizes,filtro: req.query.search});
