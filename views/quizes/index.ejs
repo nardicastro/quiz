@@ -4,7 +4,6 @@
   <input type="submit" value="Buscar">
 </form>
 
-
 <table>
   <% if (filtro !== '*') { %>
   		<tr><td>Filtro: <strong>"<%= filtro %>"</strong></td></tr>
@@ -14,3 +13,4 @@
     <tr><td><a href="quizes/<%=quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr>
   <% } %>
 </table>
+<a href="/quizes/new"><button type="button">Crear pregunta</button></a>
