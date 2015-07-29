@@ -2,14 +2,17 @@ var models = require('../models/models.js');
 
 //Autiload - faztoriza el código si la ruta incluye :quizId
 exports.load = function(req,res,next,quizId){
-  models.Quiz.findById(quizId).then(
+  models.Quiz.find({
+				where: { id: Number(quizId)},
+				include: [{model: models.Comment}]
+			  }).then(
     function(quiz) {
       if (quiz) {
         req.quiz = quiz;
         next();
       } else { next(new Error('No existe quizId=' + quizId)); }
     }
-  ).catch(function(error) { next(error); });
+ ).catch(function(error) { next(error); });
 };
 
 exports.index = function(req,res,next)
